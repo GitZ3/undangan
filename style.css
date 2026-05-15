@@ -65,12 +65,10 @@ h1, h2, h3 {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .loading-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
+    display: none;
 }
 
 .loader {
