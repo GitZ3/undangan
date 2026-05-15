@@ -1922,16 +1922,15 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* NAV TOGGLE */
 .nav-toggle {
     position: fixed;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
+    left: 8px;
+    bottom: 90px;
+    width: 34px;
+    height: 34px;
     background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
     border: 1px solid rgba(201, 169, 98, 0.3);
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: var(--primary);
@@ -1947,7 +1946,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .nav-toggle i {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* TAB NAVIGATION */
@@ -1971,6 +1970,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+.tab-nav.hidden {
+    display: none;
 }
 
 .tab-nav::-webkit-scrollbar {

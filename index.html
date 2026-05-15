@@ -756,21 +756,23 @@
         const tabNav = document.getElementById('tabNav');
         const navToggle = document.getElementById('navToggle');
 
+        function hideNav() {
+            tabNav.classList.add('hidden');
+            navToggle.style.display = 'flex';
+        }
+
         function showNav() {
-            tabNav.style.display = 'flex';
+            tabNav.classList.remove('hidden');
             navToggle.style.display = 'none';
             clearTimeout(navTimer);
-            navTimer = setTimeout(() => {
-                tabNav.style.display = 'none';
-                navToggle.style.display = 'flex';
-            }, 2000);
+            navTimer = setTimeout(hideNav, 2000);
         }
 
         function toggleNav() {
-            if (tabNav.style.display === 'none' || !tabNav.style.display) {
+            if (tabNav.classList.contains('hidden')) {
                 showNav();
             } else {
-                tabNav.style.display = 'none';
+                tabNav.classList.add('hidden');
                 navToggle.style.display = 'flex';
                 clearTimeout(navTimer);
             }
@@ -778,14 +780,8 @@
 
         document.addEventListener('scroll', showNav);
         document.addEventListener('touchstart', showNav);
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.tab-nav') && !e.target.closest('.nav-toggle')) {
-                showNav();
-            }
-        });
 
-        setTimeout(() => tabNav.style.display = 'none', 2000);
-        setTimeout(() => navToggle.style.display = 'flex', 2000);
+        showNav();
     </script>
 </body>
 </html>
