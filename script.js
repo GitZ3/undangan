@@ -1,17 +1,24 @@
 function openInvitation() {
-    const openBtn = document.getElementById('openBtn');
-    const loadingScreen = document.getElementById('loading');
+    const cover = document.getElementById('cover');
+    const splash = document.getElementById('splash');
     const mainContent = document.getElementById('mainContent');
     
-    openBtn.classList.add('hidden');
+    cover.style.display = 'none';
+    splash.style.display = 'none';
+    mainContent.style.display = 'block';
     
     setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        mainContent.classList.add('visible');
+        mainContent.style.opacity = '1';
         initAnimations();
         initCountdown();
-    }, 1500);
+    }, 100);
 }
+
+window.onload = function() {
+    setTimeout(() => {
+        document.getElementById('splash').classList.add('hidden');
+    }, 2000);
+};
 
 function initAnimations() {
     const observerOptions = {

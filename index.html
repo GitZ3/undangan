@@ -11,23 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="loading-screen" id="loading">
-        <div class="loader">
-            <div class="envelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-body"></div>
-                <div class="letter">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-            </div>
-            <p class="loading-text">Membuka Undangan...</p>
+    <div class="splash-screen" id="splash">
+        <div class="splash-content">
+            <i class="fa-solid fa-heart"></i>
+            <h1>Undangan Pernikahan</h1>
         </div>
     </div>
 
-    <button class="open-btn" id="openBtn" onclick="openInvitation()">
-        <i class="fa-solid fa-envelope-open-text"></i>
-        <span>Buka Undangan</span>
-    </button>
+    <div class="cover-screen" id="cover">
+        <button class="open-btn" onclick="openInvitation()">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <span>Buka Undangan</span>
+        </button>
+    </div>
 
     <main class="content" id="mainContent">
         <section class="hero" id="hero">
