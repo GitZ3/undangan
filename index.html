@@ -752,25 +752,13 @@
 
         loadGuestbook();
 
-        var _nt;
         var _nw = document.getElementById('navWrapper');
 
-        window.showNav = function() {
-            _nw.classList.remove('hidden');
-            clearTimeout(_nt);
-            _nt = setTimeout(function() { _nw.classList.add('hidden'); }, 2000);
-        };
-
         window.toggleNav = function() {
-            if (_nw.classList.contains('hidden')) {
-                window.showNav();
-            } else {
-                _nw.classList.add('hidden');
-                clearTimeout(_nt);
-            }
+            _nw.classList.toggle('hidden');
         };
 
-        setTimeout(window.showNav, 500);
+        setTimeout(function() { _nw.classList.add('hidden'); }, 500);
     </script>
 </body>
 </html>
