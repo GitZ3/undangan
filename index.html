@@ -94,20 +94,22 @@
                         <div class="month-year">
                             <span class="month">tes</span>
                             <span class="year">2008</span>
-                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="hero-decoration bottom">
-                <div class="flourish"></div>
-                <i class="fa-solid fa-dove"></i>
-                <div class="flourish"></div>
-            </div>
-            
-            <div class="scroll-hint">
-                <p>Scroll ke bawah</p>
-                <i class="fa-solid fa-chevron-down"></i>
+
+                <form class="ucapan-form reveal" id="ucapanForm">
+                    <input type="text" id="guestName" placeholder="Nama Anda" required>
+                    <select id="guestAttendance" required>
+                        <option value="">Konfirmasi Kehadiran</option>
+                        <option value="hadir">Hadir</option>
+                        <option value="tidak">Tidak Hadir</option>
+                    </select>
+                    <textarea id="guestMessage" placeholder="Tulis ucapan atau pesan untuk kedua mempelai..." rows="3" required></textarea>
+                    <button type="submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Kirim Ucapan
+                    </button>
+                </form>
             </div>
         </section>
 
@@ -435,20 +437,6 @@
                     <div class="section-line"></div>
                 </div>
                 
-                <form class="ucapan-form reveal" id="ucapanForm">
-                    <input type="text" id="guestName" placeholder="Nama Anda" required>
-                    <select id="guestAttendance" required>
-                        <option value="">Konfirmasi Kehadiran</option>
-                        <option value="hadir">Hadir</option>
-                        <option value="tidak">Tidak Hadir</option>
-                    </select>
-                    <textarea id="guestMessage" placeholder="Tulis ucapan atau pesan untuk kedua mempelai..." rows="3" required></textarea>
-                    <button type="submit">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        Kirim Ucapan
-                    </button>
-                </form>
-
                 <div class="guestbook reveal" id="guestbookWrap">
                     <div class="guestbook-header">
                         <i class="fa-solid fa-comment-dots"></i>
