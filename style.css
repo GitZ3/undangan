@@ -1373,9 +1373,9 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .guest-footer {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 6px;
     margin-top: 6px;
-    padding-left: 42px;
 }
 
 .guest-footer::before {
