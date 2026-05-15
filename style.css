@@ -395,6 +395,35 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     60% { transform: translateY(-5px); }
 }
 
+/* SALAM */
+.salam-section {
+    padding: 60px 20px;
+    background: var(--dark-bg);
+}
+
+.salam-card {
+    background: var(--dark-card);
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.salam-text {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.salam-desc {
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
 /* SECTION HEADER */
 .section-header {
     display: flex;
