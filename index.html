@@ -758,12 +758,12 @@
 
         function hideNav() {
             tabNav.classList.add('hidden');
-            navToggle.style.display = 'flex';
+            navToggle.classList.add('closed');
         }
 
         function showNav() {
             tabNav.classList.remove('hidden');
-            navToggle.style.display = 'none';
+            navToggle.classList.remove('closed');
             clearTimeout(navTimer);
             navTimer = setTimeout(hideNav, 2000);
         }
@@ -773,7 +773,7 @@
                 showNav();
             } else {
                 tabNav.classList.add('hidden');
-                navToggle.style.display = 'flex';
+                navToggle.classList.add('closed');
                 clearTimeout(navTimer);
             }
         }
