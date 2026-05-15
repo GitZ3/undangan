@@ -472,11 +472,30 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 20px;
 }
 
-.ornament-star i {
-    font-size: 2.5rem;
+.couple-logo-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.couple-logo-hero i {
+    font-size: 1.6rem;
     color: var(--primary);
-    opacity: 0.4;
-    animation: starGlow 3s ease-in-out infinite;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.couple-logo-hero i:first-child {
+    animation-delay: 0s;
+}
+
+.couple-logo-hero i:nth-child(2) {
+    font-size: 1.2rem;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.couple-logo-hero i:nth-child(3) {
+    animation-delay: 0.5s;
 }
 
 @keyframes starGlow {
