@@ -734,6 +734,8 @@
             guestContainer.innerHTML = '';
             snapshot.forEach(function(doc) {
                 var msg = doc.data();
+                var j = msg.jam || '--:--';
+                var t = msg.tanggal || msg.date || '--';
                 guestContainer.innerHTML +=
                     '<div class="guest-card">' +
                         '<div class="guest-header">' +
@@ -745,8 +747,8 @@
                         '</div>' +
                         '<p class="guest-text">' + msg.message + '</p>' +
                         '<div class="guest-footer">' +
-                            '<span class="guest-time">' + msg.jam + '</span>' +
-                            '<span class="guest-date">' + msg.tanggal + '</span>' +
+                            '<span class="guest-time">' + j + '</span>' +
+                            '<span class="guest-date">' + t + '</span>' +
                         '</div>' +
                     '</div>';
             });
