@@ -743,7 +743,7 @@
             if (!name || !attendance || !message) return;
             
             const messages = JSON.parse(localStorage.getItem('guestbook') || '[]');
-            messages.unshift({ name, attendance, message, date: new Date().toLocaleDateString('id-ID') });
+            messages.push({ name, attendance, message, date: new Date().toLocaleDateString('id-ID') });
             localStorage.setItem('guestbook', JSON.stringify(messages));
             
             loadGuestbook();
