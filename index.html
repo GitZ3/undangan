@@ -752,27 +752,33 @@
 
         loadGuestbook();
 
-        let navTimer;
-        const navWrapper = document.getElementById('navWrapper');
+        try {
+            let navTimer;
+            const navWrapper = document.getElementById('navWrapper');
 
-        function showNav() {
-            navWrapper.classList.remove('hidden');
-            clearTimeout(navTimer);
-            navTimer = setTimeout(() => {
-                navWrapper.classList.add('hidden');
-            }, 2000);
-        }
-
-        function toggleNav() {
-            if (navWrapper.classList.contains('hidden')) {
-                showNav();
-            } else {
-                navWrapper.classList.add('hidden');
+            window.showNav = function() {
+                if (!navWrapper) return;
+                navWrapper.classList.remove('hidden');
                 clearTimeout(navTimer);
-            }
-        }
+                navTimer = setTimeout(function() {
+                    navWrapper.classList.add('hidden');
+                }, 2000);
+            };
 
-        showNav();
+            window.toggleNav = function() {
+                if (!navWrapper) return;
+                if (navWrapper.classList.contains('hidden')) {
+                    window.showNav();
+                } else {
+                    navWrapper.classList.add('hidden');
+                    clearTimeout(navTimer);
+                }
+            };
+
+            setTimeout(window.showNav, 500);
+        } catch(e) {
+            console.log('Nav init error:', e);
+        }
     </script>
 </body>
 </html>
