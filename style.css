@@ -1370,10 +1370,19 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     padding-left: 42px;
 }
 
-.guest-date {
-    display: block;
+.guest-footer {
+    display: flex;
+    justify-content: space-between;
     margin-top: 4px;
     padding-left: 42px;
+}
+
+.guest-time {
+    font-size: 0.7rem;
+    color: var(--primary);
+}
+
+.guest-date {
     font-size: 0.7rem;
     color: var(--gray);
 }

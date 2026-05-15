@@ -744,7 +744,10 @@
                             '</div>' +
                         '</div>' +
                         '<p class="guest-text">' + msg.message + '</p>' +
-                        '<span class="guest-date">' + msg.date + '</span>' +
+                        '<div class="guest-footer">' +
+                            '<span class="guest-time">' + msg.jam + '</span>' +
+                            '<span class="guest-date">' + msg.tanggal + '</span>' +
+                        '</div>' +
                     '</div>';
             });
             guestContainer.scrollTop = guestContainer.scrollHeight;
@@ -758,11 +761,15 @@
             
             if (!name || !attendance || !message) return;
             
+            var now = new Date();
+            var jam = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+            var tanggal = String(now.getDate()).padStart(2,'0') + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + now.getFullYear();
             db.collection('guestbook').add({
                 name: name,
                 attendance: attendance,
                 message: message,
-                date: new Date().toLocaleDateString('id-ID'),
+                jam: jam,
+                tanggal: tanggal,
                 time: firebase.firestore.FieldValue.serverTimestamp()
             });
             
