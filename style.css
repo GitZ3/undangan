@@ -1650,20 +1650,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* TAB NAVIGATION */
 .tab-nav {
     position: fixed;
-    left: 20px;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     background: rgba(26, 26, 26, 0.98);
-    padding: 12px 10px;
-    border-radius: 20px;
+    padding: 10px 8px;
+    border-radius: 18px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     z-index: 9997;
     border: 1px solid rgba(201, 169, 98, 0.3);
-    max-height: 60vh;
-    overflow-y: auto;
+    height: 200px;
+    overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
