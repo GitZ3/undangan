@@ -397,31 +397,93 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* SALAM */
 .salam-section {
-    padding: 60px 20px;
+    padding: 80px 20px;
     background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.salam-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .salam-card {
-    background: var(--dark-card);
-    padding: 50px 30px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, var(--dark-card) 0%, #151515 100%);
+    padding: 60px 40px;
+    border-radius: 25px;
     text-align: center;
-    border: 1px solid rgba(201, 169, 98, 0.1);
-    max-width: 600px;
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    max-width: 650px;
     margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.salam-card::before,
+.salam-card::after {
+    content: '❧';
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+.salam-card::before {
+    top: 20px;
+    left: 30px;
+}
+
+.salam-card::after {
+    bottom: 20px;
+    right: 30px;
+    transform: rotate(180deg);
 }
 
 .salam-text {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: var(--primary);
-    margin-bottom: 20px;
-    font-family: 'Playfair Display', serif;
+    margin-bottom: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.salam-text::before,
+.salam-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: var(--primary);
+}
+
+.salam-text::before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.salam-text::after {
+    left: 100%;
+    margin-left: 15px;
 }
 
 .salam-desc {
-    color: #bbb;
-    font-size: 1rem;
-    line-height: 1.8;
+    color: #aaa;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    font-style: italic;
 }
 
 /* SECTION HEADER */
