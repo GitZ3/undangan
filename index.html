@@ -21,20 +21,13 @@
         
         <div class="cover-content">
             <div class="cover-ring">
-                <div class="couple-logo">
-                    <i class="fa-solid fa-person"></i>
-                    <i class="fa-solid fa-heart"></i>
-                    <i class="fa-solid fa-person-dress"></i>
-                </div>
+                <i class="fa-solid fa-ring"></i>
             </div>
             
             <p class="cover-subtitle">Undangan Pernikahan</p>
             
             <div class="cover-names">
                 <h1 class="cover-bride">TesPria</h1>
-                <div class="cover-heart">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
                 <h1 class="cover-bride">TesWanita</h1>
             </div>
             
@@ -74,13 +67,6 @@
             </div>
             
             <div class="hero-content">
-                <div class="ornament-star">
-                    <div class="couple-logo-hero">
-                        <i class="fa-solid fa-person"></i>
-                        <i class="fa-solid fa-heart"></i>
-                        <i class="fa-solid fa-person-dress"></i>
-                    </div>
-                </div>
                 <p class="subtitle">Undangan Pernikahan</p>
                 
                 <h1 class="bride-name">TesPria</h1>
@@ -286,7 +272,7 @@
         </section>
 
         <!-- ACARA -->
-        <section class="acara-section">
+        <section class="acara-section" id="acara">
             <div class="container">
                 <div class="section-header">
                     <div class="section-line"></div>
@@ -326,7 +312,7 @@
         </section>
 
         <!-- LOKASI -->
-        <section class="lokasi-section">
+        <section class="lokasi-section" id="lokasi">
             <div class="container">
                 <div class="section-header">
                     <div class="section-line"></div>
@@ -353,7 +339,7 @@
         </section>
 
         <!-- UCAPAN -->
-        <section class="ucapan-section">
+        <section class="ucapan-section" id="ucapan">
             <div class="container">
                 <div class="section-header">
                     <div class="section-line"></div>
@@ -381,7 +367,7 @@
         </section>
 
         <!-- HADIAH -->
-        <section class="hadiah-section">
+        <section class="hadiah-section" id="hadiah">
             <div class="container">
                 <div class="section-header">
                     <div class="section-line"></div>
@@ -432,21 +418,33 @@
     </button>
 
     <!-- Tab Navigation -->
-    <div class="tab-nav">
-        <button class="tab-btn" onclick="scrollToSection('hero')" title="Home">
+    <div class="tab-nav" id="tabNav">
+        <button class="tab-btn active" onclick="scrollToSection('hero', this)" title="Home">
             <i class="fa-solid fa-house"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('salam')" title="Salam">
+        <button class="tab-btn" onclick="scrollToSection('salam', this)" title="Salam">
             <i class="fa-solid fa-hands"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('mempelai')" title="Mempelai">
+        <button class="tab-btn" onclick="scrollToSection('ayat', this)" title="Ayat">
+            <i class="fa-solid fa-book-quran"></i>
+        </button>
+        <button class="tab-btn" onclick="scrollToSection('mempelai', this)" title="Mempelai">
             <i class="fa-solid fa-user-group"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('acara')" title="Acara">
-            <i class="fa-solid fa-calendar"></i>
+        <button class="tab-btn" onclick="scrollToSection('countdown', this)" title="Hitung">
+            <i class="fa-solid fa-hourglass-half"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('lokasi')" title="Lokasi">
-            <i class="fa-solid fa-map"></i>
+        <button class="tab-btn" onclick="scrollToSection('acara', this)" title="Acara">
+            <i class="fa-solid fa-calendar-day"></i>
+        </button>
+        <button class="tab-btn" onclick="scrollToSection('lokasi', this)" title="Lokasi">
+            <i class="fa-solid fa-map-location-dot"></i>
+        </button>
+        <button class="tab-btn" onclick="scrollToSection('ucapan', this)" title="Ucap">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+        <button class="tab-btn" onclick="scrollToSection('hadiah', this)" title="Hadiah">
+            <i class="fa-solid fa-gift"></i>
         </button>
     </div>
 
@@ -497,17 +495,41 @@
             clearInterval(scrollInterval);
         }
 
-        function scrollToSection(sectionId) {
+        function scrollToSection(sectionId, btn) {
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (btn) {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                }
             }
         }
 
-        function setActiveTab(btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
+        // Update active tab on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const nav = document.getElementById('tabNav');
+        
+        const observerOptions = {
+            root: null,
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('onclick').includes("'" + id + "'")) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
 
         function bukaUndangan() {
             const cover = document.getElementById('cover');

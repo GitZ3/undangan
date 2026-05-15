@@ -1520,18 +1520,29 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 5px;
     background: rgba(26, 26, 26, 0.95);
-    padding: 10px 15px;
-    border-radius: 30px;
+    padding: 8px 12px;
+    border-radius: 25px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     z-index: 9997;
     border: 1px solid rgba(201, 169, 98, 0.2);
+    max-width: 95vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+.tab-nav::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-btn {
-    width: 38px;
-    height: 38px;
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
     background: var(--dark-card);
     border: none;
     border-radius: 50%;
@@ -1541,6 +1552,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     align-items: center;
     transition: all 0.3s ease;
     color: var(--gray);
+    scroll-snap-align: center;
 }
 
 .tab-btn:hover {
@@ -1552,10 +1564,11 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .tab-btn.active {
     background: var(--primary);
     color: var(--dark);
+    transform: scale(1.1);
 }
 
 .tab-btn i {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* SECTION IDs for navigation */
