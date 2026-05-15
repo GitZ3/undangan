@@ -571,30 +571,26 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 25px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
+    letter-spacing: 1px;
+    word-break: break-word;
+    hyphens: auto;
 }
 
-.salam-text::before,
-.salam-text::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 30px;
-    height: 1px;
-    background: var(--primary);
-}
-
-.salam-text::before {
-    right: 100%;
-    margin-right: 15px;
-}
-
-.salam-text::after {
-    left: 100%;
-    margin-left: 15px;
+@media (max-width: 480px) {
+    .salam-text {
+        font-size: 1.2rem;
+    }
+    .salam-card {
+        padding: 40px 15px;
+    }
+    .salam-card::before,
+    .salam-card::after {
+        display: none;
+    }
+    .salam-text::before,
+    .salam-text::after {
+        display: none;
+    }
 }
 
 .salam-desc {
