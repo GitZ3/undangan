@@ -506,6 +506,11 @@
         <i class="fa-solid fa-play" id="scrollIcon"></i>
     </button>
 
+    <!-- Nav Toggle -->
+    <button class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <i class="fa-solid fa-chevron-right" id="navToggleIcon"></i>
+    </button>
+
     <!-- Tab Navigation -->
     <div class="tab-nav" id="tabNav">
         <button class="tab-btn active" onclick="scrollToSection('hero', this)" title="Home">
@@ -746,6 +751,41 @@
         });
 
         loadGuestbook();
+
+        let navTimer;
+        const tabNav = document.getElementById('tabNav');
+        const navToggle = document.getElementById('navToggle');
+
+        function showNav() {
+            tabNav.style.display = 'flex';
+            navToggle.style.display = 'none';
+            clearTimeout(navTimer);
+            navTimer = setTimeout(() => {
+                tabNav.style.display = 'none';
+                navToggle.style.display = 'flex';
+            }, 2000);
+        }
+
+        function toggleNav() {
+            if (tabNav.style.display === 'none' || !tabNav.style.display) {
+                showNav();
+            } else {
+                tabNav.style.display = 'none';
+                navToggle.style.display = 'flex';
+                clearTimeout(navTimer);
+            }
+        }
+
+        document.addEventListener('scroll', showNav);
+        document.addEventListener('touchstart', showNav);
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.tab-nav') && !e.target.closest('.nav-toggle')) {
+                showNav();
+            }
+        });
+
+        setTimeout(() => tabNav.style.display = 'none', 2000);
+        setTimeout(() => navToggle.style.display = 'flex', 2000);
     </script>
 </body>
 </html>
