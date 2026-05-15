@@ -105,43 +105,42 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .rings-stack {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: -10px;
+    height: 65px;
 }
 
 .rings-stack i {
-    font-size: 4rem;
-    color: var(--primary);
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    font-size: 3.5rem;
+    color: #e8d5a3;
+    text-shadow: 
+        0 2px 8px rgba(201, 169, 98, 0.6),
+        0 0 20px rgba(201, 169, 98, 0.3);
 }
 
 .rings-stack .ring-1 {
-    transform: translate(-50%, -50%) rotate(-20deg);
+    margin-right: -18px;
+    transform: rotate(-25deg);
     animation: ringFloat1 3s ease-in-out infinite;
     z-index: 1;
 }
 
 .rings-stack .ring-2 {
-    transform: translate(-50%, -50%) rotate(20deg);
+    margin-left: -18px;
+    transform: rotate(25deg);
     animation: ringFloat2 3s ease-in-out infinite;
-    z-index: 2;
 }
 
 @keyframes ringFloat1 {
-    0%, 100% { transform: rotate(-15deg) translateY(0); }
-    50% { transform: rotate(-15deg) translateY(-8px); }
+    0%, 100% { transform: rotate(-25deg) translateY(0); }
+    50% { transform: rotate(-25deg) translateY(-10px); }
 }
 
 @keyframes ringFloat2 {
-    0%, 100% { transform: rotate(15deg) translateY(0); }
-    50% { transform: rotate(15deg) translateY(-8px); }
+    0%, 100% { transform: rotate(25deg) translateY(0); }
+    50% { transform: rotate(25deg) translateY(-10px); }
 }
 
 @keyframes logoFloat {
