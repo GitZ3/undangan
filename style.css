@@ -137,6 +137,36 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 .cover-names {
     margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.cover-couple-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+}
+
+.cover-couple-icon i {
+    font-size: 1.2rem;
+    color: var(--primary);
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.cover-couple-icon i:first-child {
+    animation-delay: 0s;
+}
+
+.cover-couple-icon i:nth-child(2) {
+    font-size: 1rem;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.cover-couple-icon i:last-child {
+    animation-delay: 0.5s;
 }
 
 .cover-bride {
@@ -1520,23 +1550,48 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 5px;
+    gap: 4px;
     background: rgba(26, 26, 26, 0.95);
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 25px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     z-index: 9997;
     border: 1px solid rgba(201, 169, 98, 0.2);
-    max-width: 95vw;
-    overflow-x: auto;
+    width: auto;
+    max-width: 90vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    mask-image: linear-gradient(to right, transparent, black 10px, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black 90%, transparent);
 }
 
 .tab-nav::-webkit-scrollbar {
     display: none;
+}
+
+.tab-nav::before,
+.tab-nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tab-nav::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(26,26,26,0.95), transparent);
+}
+
+.tab-nav::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(26,26,26,0.95), transparent);
 }
 
 .tab-btn {
