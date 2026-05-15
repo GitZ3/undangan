@@ -96,31 +96,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 25px;
 }
 
-.couple-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
 
-.couple-logo i {
-    font-size: 1.8rem;
-    color: var(--primary);
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-.couple-logo i:first-child {
-    animation-delay: 0s;
-}
-
-.couple-logo i:nth-child(2) {
-    font-size: 1.4rem;
-    animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-.couple-logo i:nth-child(3) {
-    animation-delay: 0.5s;
-}
 
 @keyframes logoFloat {
     0%, 100% { transform: translateY(0); }
@@ -174,24 +150,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     color: var(--light);
     font-weight: 600;
     line-height: 1.3;
-}
-
-.cover-heart {
-    margin: 15px 0;
-}
-
-.cover-heart i {
-    font-size: 1.8rem;
-    color: var(--primary);
-    animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.3); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.3); }
-    60% { transform: scale(1); }
 }
 
 .cover-line {
@@ -419,26 +377,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     font-size: 0.9rem;
 }
 
-.scroll-hint {
-    position: absolute;
-    bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    animation: bounce 2s infinite;
-}
-
-.scroll-hint p {
-    color: var(--gray);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-}
-
-.scroll-hint i {
-    color: var(--primary);
-}
-
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(-10px); }
@@ -498,36 +436,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     background: linear-gradient(90deg, var(--primary), transparent);
 }
 
-.ornament-star {
-    margin-bottom: 20px;
-}
-
-.couple-logo-hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.couple-logo-hero i {
-    font-size: 1.6rem;
-    color: var(--primary);
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-.couple-logo-hero i:first-child {
-    animation-delay: 0s;
-}
-
-.couple-logo-hero i:nth-child(2) {
-    font-size: 1.2rem;
-    animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-.couple-logo-hero i:nth-child(3) {
-    animation-delay: 0.5s;
-}
-
 @keyframes starGlow {
     0%, 100% { opacity: 0.3; transform: scale(1); }
     50% { opacity: 0.6; transform: scale(1.1); }
@@ -551,13 +459,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .ampersand i.fa-heart {
     font-size: 1.8rem;
     animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-.heart-line {
-    width: 40px;
-    height: 1px;
-    background: var(--primary);
-    opacity: 0.3;
 }
 
 .divider-ornament {
@@ -928,6 +829,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .mempelai-section {
     padding: 80px 20px;
     background: var(--dark);
+    position: relative;
 }
 
 .couple-wrapper {
@@ -1554,17 +1456,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     transform: translateX(0);
 }
 
-.reveal-scale {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal-scale.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
 /* SECTION BACKGROUND ANIMATION */
 .section-anim {
     position: relative;
@@ -1589,38 +1480,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 @keyframes bgGlow {
     0%, 100% { opacity: 0.5; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.1); }
-}
-
-.section-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.section-particles span {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: particleFloat 5s ease-in-out infinite;
-}
-
-.section-particles span:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-.section-particles span:nth-child(2) { left: 25%; top: 60%; animation-delay: 0.8s; }
-.section-particles span:nth-child(3) { left: 40%; top: 30%; animation-delay: 1.6s; }
-.section-particles span:nth-child(4) { left: 60%; top: 70%; animation-delay: 2.4s; }
-.section-particles span:nth-child(5) { left: 75%; top: 40%; animation-delay: 3.2s; }
-.section-particles span:nth-child(6) { left: 90%; top: 80%; animation-delay: 4s; }
-
-@keyframes particleFloat {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-    50% { transform: translateY(-40px) scale(1.5); opacity: 0.6; }
 }
 
 /* GALERI */
@@ -1810,24 +1669,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 30px;
 }
 
-.footer-names {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.footer-names span {
-    font-size: 1.4rem;
-    color: var(--primary);
-    font-family: 'Playfair Display', serif;
-}
-
-.footer-names i {
-    color: var(--primary);
-}
-
 .footer-greet {
     color: var(--primary);
     font-size: 0.9rem;
@@ -1993,10 +1834,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     -ms-overflow-style: none;
 }
 
-.tab-nav.hidden {
-    display: none;
-}
-
 .tab-nav::-webkit-scrollbar {
     display: none;
 }
@@ -2052,9 +1889,3 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     font-size: 0.9rem;
 }
 
-/* SECTION IDs for navigation */
-.hero { id: hero; }
-#undangan .salam-section { id: salam; }
-#undangan .mempelai-section { id: mempelai; }
-#undangan .acara-section { id: acara; }
-#undangan .lokasi-section { id: lokasi; }
