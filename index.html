@@ -602,12 +602,17 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
+                    let activeBtn = null;
                     document.querySelectorAll('.tab-btn').forEach(btn => {
                         btn.classList.remove('active');
                         if (btn.getAttribute('onclick').includes("'" + id + "'")) {
                             btn.classList.add('active');
+                            activeBtn = btn;
                         }
                     });
+                    if (activeBtn) {
+                        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
                 }
             });
         }, observerOptions);
