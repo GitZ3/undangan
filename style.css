@@ -796,6 +796,13 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     display: flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.2rem;
+    }
 }
 
 .section-title i {
