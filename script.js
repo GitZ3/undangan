@@ -1,20 +1,16 @@
 function openInvitation() {
-    const loadingScreen = document.getElementById('loading');
     const openBtn = document.getElementById('openBtn');
+    const loadingScreen = document.getElementById('loading');
     const mainContent = document.getElementById('mainContent');
     
     openBtn.classList.add('hidden');
     
     setTimeout(() => {
-        loadingScreen.classList.remove('hidden');
-        
-        setTimeout(() => {
-            loadingScreen.classList.add('hidden');
-            mainContent.classList.add('visible');
-            initAnimations();
-            initCountdown();
-        }, 2000);
-    }, 300);
+        loadingScreen.classList.add('hidden');
+        mainContent.classList.add('visible');
+        initAnimations();
+        initCountdown();
+    }, 1500);
 }
 
 function initAnimations() {
