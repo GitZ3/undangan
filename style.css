@@ -1377,6 +1377,110 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     transform: translateY(-3px);
 }
 
+/* GALERI */
+.galeri-section {
+    padding: 80px 20px;
+    background: var(--dark);
+}
+
+.galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.galeri-item {
+    perspective: 1000px;
+}
+
+.galeri-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--dark-card);
+    border: 3px solid var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(201, 169, 98, 0.1);
+}
+
+.galeri-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    opacity: 0.3;
+    transform: translateZ(10px);
+}
+
+.galeri-frame:hover {
+    transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(201, 169, 98, 0.3),
+        inset 0 0 20px rgba(201, 169, 98, 0.2);
+}
+
+.galeri-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+}
+
+.galeri-img i {
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.4;
+}
+
+.galeri-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(201, 169, 98, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.galeri-overlay i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.galeri-frame:hover .galeri-overlay {
+    opacity: 1;
+}
+
+.galeri-frame:hover .galeri-overlay i {
+    transform: scale(1);
+}
+
+@media (max-width: 480px) {
+    .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* HADIAH */
 .hadiah-section {
     padding: 80px 20px;
