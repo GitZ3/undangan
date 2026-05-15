@@ -1650,48 +1650,32 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* TAB NAVIGATION */
 .tab-nav {
     position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    gap: 6px;
     background: rgba(26, 26, 26, 0.98);
-    padding: 8px 12px;
-    border-radius: 25px;
+    padding: 12px 10px;
+    border-radius: 20px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     z-index: 9997;
     border: 1px solid rgba(201, 169, 98, 0.3);
-    width: 220px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.tab-nav {
-    scroll-snap-type: x mandatory;
-}
-
-.tab-btn {
-    flex: 0 0 auto;
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
-    border: 1px solid rgba(201, 169, 98, 0.3);
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    color: #c9a962;
-    scroll-snap-align: center;
-}
-
 .tab-nav::-webkit-scrollbar {
     display: none;
+}
+
+.tab-nav {
+    scroll-snap-type: y mandatory;
 }
 
 .tab-nav::before,
@@ -1705,29 +1689,19 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     z-index: 1;
 }
 
-.tab-nav::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(26,26,26,1) 0%, rgba(26,26,26,0.8) 50%, transparent 100%);
-}
-
-.tab-nav::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(26,26,26,0.95), transparent);
-}
-
 .tab-btn {
     flex: 0 0 auto;
-    width: 36px;
-    height: 36px;
-    background: var(--dark-card);
-    border: none;
-    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    color: var(--gray);
+    color: #c9a962;
     scroll-snap-align: center;
 }
 
