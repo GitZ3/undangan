@@ -506,13 +506,9 @@
         <i class="fa-solid fa-play" id="scrollIcon"></i>
     </button>
 
-    <!-- Nav Toggle -->
-    <button class="nav-toggle" id="navToggle" onclick="toggleNav()">
-        <i class="fa-solid fa-chevron-right" id="navToggleIcon"></i>
-    </button>
-
     <!-- Tab Navigation -->
-    <div class="tab-nav" id="tabNav">
+    <div class="nav-wrapper" id="navWrapper">
+        <div class="tab-nav" id="tabNav">
         <button class="tab-btn active" onclick="scrollToSection('hero', this)" title="Home">
             <i class="fa-solid fa-house"></i>
         </button>
@@ -544,6 +540,10 @@
             <i class="fa-solid fa-gift"></i>
         </button>
     </div>
+    <button class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+</div>
 
     <script>
         // Scroll reveal animation
@@ -753,27 +753,23 @@
         loadGuestbook();
 
         let navTimer;
-        const tabNav = document.getElementById('tabNav');
-        const navToggle = document.getElementById('navToggle');
+        const navWrapper = document.getElementById('navWrapper');
 
         function hideNav() {
-            tabNav.classList.add('hidden');
-            navToggle.classList.add('closed');
+            navWrapper.classList.add('hidden');
         }
 
         function showNav() {
-            tabNav.classList.remove('hidden');
-            navToggle.classList.remove('closed');
+            navWrapper.classList.remove('hidden');
             clearTimeout(navTimer);
             navTimer = setTimeout(hideNav, 2000);
         }
 
         function toggleNav() {
-            if (tabNav.classList.contains('hidden')) {
+            if (navWrapper.classList.contains('hidden')) {
                 showNav();
             } else {
-                tabNav.classList.add('hidden');
-                navToggle.classList.add('closed');
+                navWrapper.classList.add('hidden');
                 clearTimeout(navTimer);
             }
         }
