@@ -752,33 +752,25 @@
 
         loadGuestbook();
 
-        try {
-            let navTimer;
-            const navWrapper = document.getElementById('navWrapper');
+        var _nt;
+        var _nw = document.getElementById('navWrapper');
 
-            window.showNav = function() {
-                if (!navWrapper) return;
-                navWrapper.classList.remove('hidden');
-                clearTimeout(navTimer);
-                navTimer = setTimeout(function() {
-                    navWrapper.classList.add('hidden');
-                }, 2000);
-            };
+        window.showNav = function() {
+            _nw.classList.remove('hidden');
+            clearTimeout(_nt);
+            _nt = setTimeout(function() { _nw.classList.add('hidden'); }, 2000);
+        };
 
-            window.toggleNav = function() {
-                if (!navWrapper) return;
-                if (navWrapper.classList.contains('hidden')) {
-                    window.showNav();
-                } else {
-                    navWrapper.classList.add('hidden');
-                    clearTimeout(navTimer);
-                }
-            };
+        window.toggleNav = function() {
+            if (_nw.classList.contains('hidden')) {
+                window.showNav();
+            } else {
+                _nw.classList.add('hidden');
+                clearTimeout(_nt);
+            }
+        };
 
-            setTimeout(window.showNav, 500);
-        } catch(e) {
-            console.log('Nav init error:', e);
-        }
+        setTimeout(window.showNav, 500);
     </script>
 </body>
 </html>
