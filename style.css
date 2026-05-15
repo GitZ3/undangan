@@ -1042,10 +1042,11 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 10px;
 }
 
-.info-ornament i {
+.info-ornament i,
+.info-ornament {
     font-size: 1.2rem;
     color: var(--primary);
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 .couple-heart {
