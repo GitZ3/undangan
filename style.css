@@ -1019,10 +1019,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* AUTO SCROLL BUTTON */
 .auto-scroll-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
+    bottom: 25px;
+    right: 25px;
+    width: 44px;
+    height: 44px;
     background: var(--gold-gradient);
     border: none;
     border-radius: 50%;
@@ -1031,24 +1031,25 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 20px rgba(201, 169, 98, 0.4);
+    box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);
     transition: all 0.3s ease;
 }
 
 .auto-scroll-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(201, 169, 98, 0.5);
 }
 
 .auto-scroll-btn.active {
-    animation: pulseBtn 1.5s infinite;
+    animation: pulseBtn 2s infinite;
 }
 
 .auto-scroll-btn i {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #0a0a0a;
 }
 
 @keyframes pulseBtn {
-    0%, 100% { box-shadow: 0 5px 20px rgba(201, 169, 98, 0.4); }
-    50% { box-shadow: 0 5px 30px rgba(201, 169, 98, 0.7); }
+    0%, 100% { box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4); }
+    50% { box-shadow: 0 4px 25px rgba(201, 169, 98, 0.6); }
 }
