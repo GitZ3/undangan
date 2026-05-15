@@ -619,6 +619,12 @@
         function startAutoScroll() {
             function step() {
                 if (!autoScrollEnabled) return;
+                var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                if (window.scrollY >= maxScroll) {
+                    stopAutoScroll();
+                    document.getElementById('autoScrollBtn').click();
+                    return;
+                }
                 window.scrollBy(0, 1.5);
                 autoScrollId = requestAnimationFrame(step);
             }

@@ -115,19 +115,23 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .rings-stack i {
-    font-size: 3.5rem;
+    font-size: 4rem;
     color: var(--primary);
     position: absolute;
+    left: 50%;
+    top: 50%;
 }
 
 .rings-stack .ring-1 {
-    transform: rotate(-15deg);
+    transform: translate(-50%, -50%) rotate(-20deg);
     animation: ringFloat1 3s ease-in-out infinite;
+    z-index: 1;
 }
 
 .rings-stack .ring-2 {
-    transform: rotate(15deg);
+    transform: translate(-50%, -50%) rotate(20deg);
     animation: ringFloat2 3s ease-in-out infinite;
+    z-index: 2;
 }
 
 @keyframes ringFloat1 {
