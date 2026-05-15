@@ -1750,6 +1750,39 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     50% { box-shadow: 0 4px 25px rgba(201, 169, 98, 0.6); }
 }
 
+/* MUSIC BUTTON */
+.music-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 25px;
+    width: 44px;
+    height: 44px;
+    background: var(--gold-gradient);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(201, 169, 98, 0.5);
+}
+
+.music-btn.playing {
+    animation: pulseBtn 2s infinite;
+}
+
+.music-btn i {
+    font-size: 1rem;
+    color: #0a0a0a;
+}
+
 /* TAB NAVIGATION */
 .tab-nav {
     position: fixed;

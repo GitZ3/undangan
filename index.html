@@ -492,6 +492,16 @@
         </footer>
     </main>
 
+    <!-- Audio -->
+    <audio id="bgm" loop preload="auto">
+        <source src="https://www.chosic.com/wp-content/uploads/2022/11/Royalty-Free-Cinematic-Wedding-Piano-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Button -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music" id="musicIcon"></i>
+    </button>
+
     <!-- Auto Scroll Button -->
     <button class="auto-scroll-btn" id="autoScrollBtn" onclick="toggleAutoScroll()">
         <i class="fa-solid fa-play" id="scrollIcon"></i>
@@ -545,6 +555,23 @@
             revealElements.forEach(el => revealObserver.observe(el));
         }
         document.addEventListener('DOMContentLoaded', initReveal);
+
+        let musicPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById('bgm');
+            const icon = document.getElementById('musicIcon');
+            const btn = document.getElementById('musicBtn');
+            if (musicPlaying) {
+                audio.pause();
+                icon.className = 'fa-solid fa-music';
+                btn.classList.remove('playing');
+            } else {
+                audio.play().catch(() => {});
+                icon.className = 'fa-solid fa-circle-pause';
+                btn.classList.add('playing');
+            }
+            musicPlaying = !musicPlaying;
+        }
 
         let autoScrollEnabled = false;
         let scrollInterval;
