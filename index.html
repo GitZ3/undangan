@@ -349,7 +349,50 @@
         </footer>
     </main>
 
+    <!-- Auto Scroll Button -->
+    <button class="auto-scroll-btn" id="autoScrollBtn" onclick="toggleAutoScroll()">
+        <i class="fa-solid fa-play" id="scrollIcon"></i>
+    </button>
+
     <script>
+        let autoScrollEnabled = false;
+        let scrollInterval;
+
+        function toggleAutoScroll() {
+            const btn = document.getElementById('autoScrollBtn');
+            const icon = document.getElementById('scrollIcon');
+            
+            autoScrollEnabled = !autoScrollEnabled;
+            
+            if (autoScrollEnabled) {
+                icon.className = 'fa-solid fa-pause';
+                btn.classList.add('active');
+                startAutoScroll();
+            } else {
+                icon.className = 'fa-solid fa-play';
+                btn.classList.remove('active');
+                stopAutoScroll();
+            }
+        }
+
+        function startAutoScroll() {
+            const sections = document.querySelectorAll('section');
+            let currentSection = 0;
+            
+            scrollInterval = setInterval(() => {
+                if (currentSection < sections.length) {
+                    sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+                    currentSection++;
+                } else {
+                    currentSection = 0;
+                }
+            }, 4000);
+        }
+
+        function stopAutoScroll() {
+            clearInterval(scrollInterval);
+        }
+
         function bukaUndangan() {
             const cover = document.getElementById('cover');
             const undangan = document.getElementById('undangan');
