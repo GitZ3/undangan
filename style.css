@@ -1571,9 +1571,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .tab-btn {
-    flex: 0 0 36px;
-    width: 36px;
-    height: 36px;
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #c9a962;
+    scroll-snap-align: center;
+}
 
 .tab-nav::-webkit-scrollbar {
     display: none;
@@ -1617,19 +1628,23 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .tab-btn:hover {
-    background: var(--primary);
-    color: var(--dark);
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, #c9a962 0%, #a88b4a 100%);
+    color: #0a0a0a;
+    transform: translateY(-2px);
+    border-color: #c9a962;
+    box-shadow: 0 5px 15px rgba(201, 169, 98, 0.4);
 }
 
 .tab-btn.active {
-    background: var(--primary);
-    color: var(--dark);
+    background: linear-gradient(135deg, #c9a962 0%, #e8d5a3 100%);
+    color: #0a0a0a;
     transform: scale(1.1);
+    border-color: #c9a962;
+    box-shadow: 0 5px 20px rgba(201, 169, 98, 0.5);
 }
 
 .tab-btn i {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 
 /* SECTION IDs for navigation */
