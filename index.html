@@ -118,7 +118,7 @@
             <div class="section-corner bl"></div>
             <div class="section-corner br"></div>
             <div class="container">
-                <div class="salam-card">
+                <div class="salam-card reveal">
                     <div class="card-ornament top">
                         <i class="fa-solid fa-crown"></i>
                     </div>
@@ -145,7 +145,7 @@
                 <i class="fa-solid fa-crown"></i>
             </div>
             <div class="container">
-                <div class="ayat-card">
+                <div class="ayat-card reveal">
                     <div class="ayat-border">
                         <div class="border-corner tl"></div>
                         <div class="border-corner tr"></div>
@@ -186,7 +186,7 @@
                 </div>
                 
                 <div class="couple-wrapper">
-                    <div class="couple-card groom">
+                    <div class="couple-card groom reveal-left">
                         <div class="photo-frame">
                             <div class="frame-corner tl"></div>
                             <div class="frame-corner tr"></div>
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                     
-                    <div class="couple-card bride">
+                    <div class="couple-card bride reveal-right">
                         <div class="photo-frame">
                             <div class="frame-corner tl"></div>
                             <div class="frame-corner tr"></div>
@@ -255,7 +255,7 @@
                         <span></span>
                     </div>
                 </div>
-                <div class="galeri-grid">
+                <div class="galeri-grid reveal">
                     <div class="galeri-item">
                         <div class="galeri-frame">
                             <div class="galeri-img">
@@ -333,7 +333,7 @@
                 </div>
                 
                 <div class="countdown-wrapper">
-                    <div class="countdown-box">
+                    <div class="countdown-box reveal">
                         <span class="countdown-num" id="days">00</span>
                         <span class="countdown-label">Hari</span>
                     </div>
@@ -369,7 +369,7 @@
                 </div>
                 
                 <div class="acara-grid">
-                    <div class="event-card">
+                    <div class="event-card reveal-left">
                         <div class="event-icon">
                             <i class="fa-solid fa-mosque"></i>
                         </div>
@@ -381,7 +381,7 @@
                         </div>
                     </div>
                     
-                    <div class="event-card">
+                    <div class="event-card reveal-right">
                         <div class="event-icon">
                             <i class="fa-solid fa-champagne-glasses"></i>
                         </div>
@@ -408,7 +408,7 @@
                     <div class="section-line"></div>
                 </div>
                 
-                <div class="lokasi-card">
+                <div class="lokasi-card reveal">
                     <div class="lokasi-icon">
                         <i class="fa-solid fa-building"></i>
                     </div>
@@ -435,7 +435,7 @@
                     <div class="section-line"></div>
                 </div>
                 
-                <form class="ucapan-form" id="ucapanForm">
+                <form class="ucapan-form reveal" id="ucapanForm">
                     <input type="text" placeholder="Nama Anda" required>
                     <select required>
                         <option value="">Konfirmasi Kehadiran</option>
@@ -532,6 +532,20 @@
     </div>
 
     <script>
+        // Scroll reveal animation
+        function initReveal() {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            revealElements.forEach(el => revealObserver.observe(el));
+        }
+        document.addEventListener('DOMContentLoaded', initReveal);
+
         let autoScrollEnabled = false;
         let scrollInterval;
 
