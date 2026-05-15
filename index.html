@@ -435,12 +435,6 @@
                     <div class="section-line"></div>
                 </div>
                 
-                <div class="guestbook reveal">
-                    <div class="guestbook-messages" id="guestMessages">
-                        <div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>
-                    </div>
-                </div>
-                
                 <form class="ucapan-form reveal" id="ucapanForm">
                     <input type="text" id="guestName" placeholder="Nama Anda" required>
                     <select id="guestAttendance" required>
@@ -454,6 +448,16 @@
                         Kirim Ucapan
                     </button>
                 </form>
+
+                <div class="guestbook reveal" id="guestbookWrap">
+                    <div class="guestbook-header">
+                        <i class="fa-solid fa-comment-dots"></i>
+                        <span>Pesan Tamu</span>
+                    </div>
+                    <div class="guestbook-messages" id="guestMessages">
+                        <div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -733,6 +737,7 @@
                     <span class="guest-date">${msg.date}</span>
                 </div>
             `).join('');
+            container.scrollTop = container.scrollHeight;
         }
 
         document.getElementById('ucapanForm').addEventListener('submit', function(e) {
