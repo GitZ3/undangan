@@ -1325,6 +1325,113 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     background: var(--dark);
 }
 
+/* GUESTBOOK */
+.guestbook {
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+
+.guestbook-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.guestbook-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.guestbook-messages::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.guest-empty {
+    text-align: center;
+    color: var(--gray);
+    padding: 40px;
+    font-style: italic;
+}
+
+.guest-card {
+    background: var(--dark-card);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.guest-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.guest-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.guest-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.guest-name {
+    color: var(--light);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.guest-attendance {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.guest-attendance.hadir {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+.guest-attendance.tidak {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+}
+
+.guest-text {
+    color: #bbb;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.guest-date {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--gray);
+}
+
 .ucapan-form {
     max-width: 500px;
     margin: 0 auto;

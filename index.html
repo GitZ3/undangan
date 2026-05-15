@@ -430,19 +430,25 @@
                     <div class="section-line"></div>
                     <h2 class="section-title">
                         <i class="fa-solid fa-comments"></i>
-                        Ucapkan Sesuatu
+                        Tamu Undangan
                     </h2>
                     <div class="section-line"></div>
                 </div>
                 
+                <div class="guestbook reveal">
+                    <div class="guestbook-messages" id="guestMessages">
+                        <div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>
+                    </div>
+                </div>
+                
                 <form class="ucapan-form reveal" id="ucapanForm">
-                    <input type="text" placeholder="Nama Anda" required>
-                    <select required>
+                    <input type="text" id="guestName" placeholder="Nama Anda" required>
+                    <select id="guestAttendance" required>
                         <option value="">Konfirmasi Kehadiran</option>
                         <option value="hadir">Hadir</option>
                         <option value="tidak">Tidak Hadir</option>
                     </select>
-                    <textarea placeholder="Tulis ucapan atau pesan untuk kedua mempelai..." rows="3"></textarea>
+                    <textarea id="guestMessage" placeholder="Tulis ucapan atau pesan untuk kedua mempelai..." rows="3" required></textarea>
                     <button type="submit">
                         <i class="fa-solid fa-paper-plane"></i>
                         Kirim Ucapan
@@ -707,11 +713,45 @@
             setInterval(update, 1000);
         }
 
+        function loadGuestbook() {
+            const messages = JSON.parse(localStorage.getItem('guestbook') || '[]');
+            const container = document.getElementById('guestMessages');
+            if (messages.length === 0) {
+                container.innerHTML = '<div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>';
+                return;
+            }
+            container.innerHTML = messages.map(msg => `
+                <div class="guest-card">
+                    <div class="guest-header">
+                        <div class="guest-avatar">${msg.name.charAt(0).toUpperCase()}</div>
+                        <div class="guest-meta">
+                            <span class="guest-name">${msg.name}</span>
+                            <span class="guest-attendance ${msg.attendance}">${msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir'}</span>
+                        </div>
+                    </div>
+                    <p class="guest-text">${msg.message}</p>
+                    <span class="guest-date">${msg.date}</span>
+                </div>
+            `).join('');
+        }
+
         document.getElementById('ucapanForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Terima kasih! Ucapan Anda telah terkirim.');
+            const name = document.getElementById('guestName').value.trim();
+            const attendance = document.getElementById('guestAttendance').value;
+            const message = document.getElementById('guestMessage').value.trim();
+            
+            if (!name || !attendance || !message) return;
+            
+            const messages = JSON.parse(localStorage.getItem('guestbook') || '[]');
+            messages.unshift({ name, attendance, message, date: new Date().toLocaleDateString('id-ID') });
+            localStorage.setItem('guestbook', JSON.stringify(messages));
+            
+            loadGuestbook();
             this.reset();
         });
+
+        loadGuestbook();
     </script>
 </body>
 </html>
