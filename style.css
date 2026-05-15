@@ -1558,6 +1558,58 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     background: var(--dark);
 }
 
+.video-wrapper {
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--dark-card);
+    border: 3px solid var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(201, 169, 98, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+    pointer-events: none;
+}
+
+.video-placeholder i {
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.5;
+}
+
+.video-placeholder p {
+    color: var(--primary);
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
+
 .galeri-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
