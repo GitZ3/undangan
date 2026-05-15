@@ -104,7 +104,41 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin-bottom: 25px;
 }
 
+.rings-stack {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.rings-stack i {
+    font-size: 3.5rem;
+    color: var(--primary);
+    position: absolute;
+}
+
+.rings-stack .ring-1 {
+    transform: rotate(-15deg);
+    animation: ringFloat1 3s ease-in-out infinite;
+}
+
+.rings-stack .ring-2 {
+    transform: rotate(15deg);
+    animation: ringFloat2 3s ease-in-out infinite;
+}
+
+@keyframes ringFloat1 {
+    0%, 100% { transform: rotate(-15deg) translateY(0); }
+    50% { transform: rotate(-15deg) translateY(-8px); }
+}
+
+@keyframes ringFloat2 {
+    0%, 100% { transform: rotate(15deg) translateY(0); }
+    50% { transform: rotate(15deg) translateY(-8px); }
+}
 
 @keyframes logoFloat {
     0%, 100% { transform: translateY(0); }
