@@ -755,14 +755,12 @@
         let navTimer;
         const navWrapper = document.getElementById('navWrapper');
 
-        function hideNav() {
-            navWrapper.classList.add('hidden');
-        }
-
         function showNav() {
             navWrapper.classList.remove('hidden');
             clearTimeout(navTimer);
-            navTimer = setTimeout(hideNav, 2000);
+            navTimer = setTimeout(() => {
+                navWrapper.classList.add('hidden');
+            }, 2000);
         }
 
         function toggleNav() {
@@ -773,9 +771,6 @@
                 clearTimeout(navTimer);
             }
         }
-
-        document.addEventListener('scroll', showNav);
-        document.addEventListener('touchstart', showNav);
 
         showNav();
     </script>
