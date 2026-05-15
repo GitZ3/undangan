@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 <body>
     <!-- COVER PAGE -->
@@ -546,6 +549,18 @@
 </div>
 
     <script>
+        // Firebase config - ganti dengan config dari project Firebase kamu
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
         // Scroll reveal animation
         function initReveal() {
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -708,46 +723,51 @@
             setInterval(update, 1000);
         }
 
-        function loadGuestbook() {
-            const messages = JSON.parse(localStorage.getItem('guestbook') || '[]');
-            const container = document.getElementById('guestMessages');
-            if (messages.length === 0) {
-                container.innerHTML = '<div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>';
+        var guestContainer = document.getElementById('guestMessages');
+
+        // Real-time listener dari Firestore
+        db.collection('guestbook').orderBy('time', 'asc').onSnapshot(function(snapshot) {
+            if (snapshot.empty) {
+                guestContainer.innerHTML = '<div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>';
                 return;
             }
-            container.innerHTML = messages.map(msg => `
-                <div class="guest-card">
-                    <div class="guest-header">
-                        <div class="guest-avatar">${msg.name.charAt(0).toUpperCase()}</div>
-                        <div class="guest-meta">
-                            <span class="guest-name">${msg.name}</span>
-                            <span class="guest-attendance ${msg.attendance}">${msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir'}</span>
-                        </div>
-                    </div>
-                    <p class="guest-text">${msg.message}</p>
-                    <span class="guest-date">${msg.date}</span>
-                </div>
-            `).join('');
-            container.scrollTop = container.scrollHeight;
-        }
+            guestContainer.innerHTML = '';
+            snapshot.forEach(function(doc) {
+                var msg = doc.data();
+                guestContainer.innerHTML +=
+                    '<div class="guest-card">' +
+                        '<div class="guest-header">' +
+                            '<div class="guest-avatar">' + msg.name.charAt(0).toUpperCase() + '</div>' +
+                            '<div class="guest-meta">' +
+                                '<span class="guest-name">' + msg.name + '</span>' +
+                                '<span class="guest-attendance ' + msg.attendance + '">' + (msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir') + '</span>' +
+                            '</div>' +
+                        '</div>' +
+                        '<p class="guest-text">' + msg.message + '</p>' +
+                        '<span class="guest-date">' + msg.date + '</span>' +
+                    '</div>';
+            });
+            guestContainer.scrollTop = guestContainer.scrollHeight;
+        });
 
         document.getElementById('ucapanForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('guestName').value.trim();
-            const attendance = document.getElementById('guestAttendance').value;
-            const message = document.getElementById('guestMessage').value.trim();
+            var name = document.getElementById('guestName').value.trim();
+            var attendance = document.getElementById('guestAttendance').value;
+            var message = document.getElementById('guestMessage').value.trim();
             
             if (!name || !attendance || !message) return;
             
-            const messages = JSON.parse(localStorage.getItem('guestbook') || '[]');
-            messages.push({ name, attendance, message, date: new Date().toLocaleDateString('id-ID') });
-            localStorage.setItem('guestbook', JSON.stringify(messages));
+            db.collection('guestbook').add({
+                name: name,
+                attendance: attendance,
+                message: message,
+                date: new Date().toLocaleDateString('id-ID'),
+                time: firebase.firestore.FieldValue.serverTimestamp()
+            });
             
-            loadGuestbook();
             this.reset();
         });
-
-        loadGuestbook();
 
         var _nw = document.getElementById('navWrapper');
 
