@@ -11,23 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="splash-screen" id="splash">
-        <div class="splash-content">
-            <i class="fa-solid fa-heart"></i>
+    <div id="cover">
+        <div class="cover-inner">
             <h1>Undangan Pernikahan</h1>
+            <p class="date">30 tes 2008</p>
+            <button class="btn-buka" onclick="bukaUndangan()">
+                <i class="fa-solid fa-envelope"></i> Buka Undangan
+            </button>
         </div>
     </div>
 
-    <div class="cover-screen" id="cover">
-        <button class="open-btn" onclick="openInvitation()">
-            <i class="fa-solid fa-envelope-open-text"></i>
-            <span>Buka Undangan</span>
-        </button>
-    </div>
-
-    <main class="content" id="mainContent">
-        <section class="hero" id="hero">
-            <div class="hero-overlay"></div>
+    <main id="undangan" style="display:none;">
+        <section class="hero">
             <div class="hero-content">
                 <p class="subtitle">Undangan Pernikahan</p>
                 <h1 class="bride-name">TesPria</h1>
@@ -35,15 +30,9 @@
                 <h1 class="bride-name">TesWanita</h1>
                 <p class="date">30 tes 2008</p>
             </div>
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <p>Scroll ke bawah</p>
-            </div>
         </section>
 
-        <section class="intro" id="intro">
+        <section class="intro">
             <div class="container">
                 <div class="ayat">
                     <p class="arab">وَمِنۡ اٰیٰتِہِ اَنۡ خَلَقَ لَکُمۡ مِّنۡ اَنفُسِکُمۡ اَزۡوَاجًا لِّتَسۡکُنُوۡۤا اِلَیۡھَا وَجَعَلَ بَیۡنَکُمۡ مَوَدَّةً وَّرَحۡمَةًۚ</p>
@@ -53,25 +42,21 @@
             </div>
         </section>
 
-        <section class="mempelai" id="mempelai">
+        <section class="mempelai">
             <div class="container">
                 <h2 class="section-title">Mempelai</h2>
                 <div class="couple-container">
-                    <div class="couple-card groom">
+                    <div class="couple-card">
                         <div class="photo-frame">
-                            <div class="photo-placeholder">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
+                            <i class="fa-solid fa-user"></i>
                         </div>
                         <h3 class="name">TesPria</h3>
                         <p class="title">Calon Mempelai Pria</p>
                         <p class="parents">Putra dari Bpk. XXX & Ibu XXX</p>
                     </div>
-                    <div class="couple-card bride">
+                    <div class="couple-card">
                         <div class="photo-frame">
-                            <div class="photo-placeholder">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
+                            <i class="fa-solid fa-user"></i>
                         </div>
                         <h3 class="name">TesWanita</h3>
                         <p class="title">Calon Mempelai Wanita</p>
@@ -81,139 +66,41 @@
             </div>
         </section>
 
-        <section class="acara" id="acara">
+        <section class="acara">
             <div class="container">
                 <h2 class="section-title">Acara</h2>
                 <div class="events-container">
                     <div class="event-card">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-mosque"></i>
-                        </div>
+                        <i class="fa-solid fa-mosque"></i>
                         <h3>Akad Nikah</h3>
-                        <p class="event-date">30 tes 2008</p>
-                        <p class="event-time">08.00 - 10.00 WIB</p>
-                        <p class="event-location">LANGIT</p>
+                        <p>30 tes 2008</p>
+                        <p>08.00 - 10.00 WIB</p>
+                        <p>LANGIT</p>
                     </div>
                     <div class="event-card">
-                        <div class="event-icon">
-                            <i class="fa-solid fa-champagne-glasses"></i>
-                        </div>
+                        <i class="fa-solid fa-champagne-glasses"></i>
                         <h3>Resepsi</h3>
-                        <p class="event-date">30 tes 2008</p>
-                        <p class="event-time">10.00 - 00.00 WIB</p>
-                        <p class="event-location">LANGIT</p>
+                        <p>30 tes 2008</p>
+                        <p>10.00 - 00.00 WIB</p>
+                        <p>LANGIT</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="countdown" id="countdown">
+        <section class="footer">
             <div class="container">
-                <h2 class="section-title">Menghitung Hari</h2>
-                <div class="countdown-container">
-                    <div class="countdown-item">
-                        <span class="number" id="days">00</span>
-                        <span class="label">Hari</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="number" id="hours">00</span>
-                        <span class="label">Jam</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="number" id="minutes">00</span>
-                        <span class="label">Menit</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="number" id="seconds">00</span>
-                        <span class="label">Detik</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="lokasi" id="lokasi">
-            <div class="container">
-                <h2 class="section-title">Lokasi</h2>
-                <div class="location-card">
-                    <div class="location-icon">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                    <h3>LANGIT</h3>
-                    <p class="address">Silakan hubungi mempelai untuk detail lokasi</p>
-                    <a href="#" class="map-btn" onclick="alert('Hubungi keluarga untuk mendapat petunjuk arah lengkap')">
-                        <i class="fa-solid fa-directions"></i>
-                        <span>Buka Peta</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="rsvp" id="rsvp">
-            <div class="container">
-                <h2 class="section-title">RSVP</h2>
-                <p class="rsvp-desc">Konfirmasi kehadiran Anda</p>
-                <form class="rsvp-form" id="rsvpForm">
-                    <div class="form-group">
-                        <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required>
-                    </div>
-                    <div class="form-group">
-                        <select id="kehadiran" name="kehadiran" required>
-                            <option value="">Pilih Kehadiran</option>
-                            <option value="hadir">Hadir</option>
-                            <option value="tidak_hadir">Tidak Hadir</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="number" id="jumlah" name="jumlah" placeholder="Jumlah Tamu (Termasuk Anda)" min="1" value="1">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="pesan" name="pesan" placeholder="Pesan untuk kedua mempelai (Opsional)" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Kirim</span>
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <section class="gift" id="gift">
-            <div class="container">
-                <h2 class="section-title">Kirim Hadiah</h2>
-                <p class="gift-desc">Doa restu Anda adalah hadiah terindah bagi kami</p>
-                <div class="gift-options">
-                    <div class="gift-card">
-                        <i class="fa-solid fa-gift"></i>
-                        <h3>Kirim Hadiah Fisik</h3>
-                        <p>Hubungi keluarga terdekat kami untuk pengiriman hadiah</p>
-                    </div>
-                    <div class="gift-card">
-                        <i class="fa-solid fa-credit-card"></i>
-                        <h3>Transfer Digital</h3>
-                        <p>BCA: 1234567890 a.n. TesPria</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="footer" id="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <p class="doaa">Semoga Allah memberkati kedua mempelai</p>
-                    <p class="closing">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
-                    <div class="footer-names">
-                        <h3>TesPria</h3>
-                        <span>&</span>
-                        <h3>TesWanita</h3>
-                    </div>
-                    <div class="footer-decoration">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                </div>
+                <p>Semoga Allah memberkati kedua mempelai</p>
+                <h3>TesPria & TesWanita</h3>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        function bukaUndangan() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('undangan').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
