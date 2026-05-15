@@ -1708,6 +1708,14 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     margin: 3px 0;
 }
 
+.hadiah-note {
+    color: var(--primary) !important;
+    font-size: 0.75rem !important;
+    margin-top: 10px !important;
+    font-style: italic;
+    opacity: 0.8;
+}
+
 /* FOOTER */
 .footer {
     padding: 60px 20px;
