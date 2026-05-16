@@ -188,7 +188,7 @@
                             <div class="frame-corner bl"></div>
                             <div class="frame-corner br"></div>
                             <div class="photo-inner">
-                                <i class="fa-solid fa-user"></i>
+                                <img src="https://images.unsplash.com/photo-1560109945-61c4e7a4a800?w=400&h=400&fit=crop" alt="Dyroth" loading="lazy">
                             </div>
                         </div>
                         <div class="couple-info">
@@ -216,7 +216,7 @@
                             <div class="frame-corner bl"></div>
                             <div class="frame-corner br"></div>
                             <div class="photo-inner">
-                                <i class="fa-solid fa-user"></i>
+                                <img src="https://images.unsplash.com/photo-1554212104-9e7e39a80f93?w=400&h=400&fit=crop" alt="Miya" loading="lazy">
                             </div>
                         </div>
                         <div class="couple-info">
@@ -487,7 +487,11 @@
                     <div class="hadiah-card reveal">
                         <i class="fa-solid fa-credit-card"></i>
                         <h4>Transfer Digital</h4>
-                        <p>BCA: 1234567890</p>
+                        <p class="rekening-row">BCA: <span id="rekening">1234567890</span>
+                            <button class="btn-copy" id="btnCopy" title="Salin nomor rekening">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </p>
                         <p>a.n. Dyroth</p>
                         <p class="hadiah-note">Note : Tuliskan nama dan nominal di pesan ucapan</p>
                     </div>
@@ -697,7 +701,39 @@
                 undangan.style.display = 'block';
                 window.scrollTo(0, 0);
                 mulaiCountdown();
+                // Auto-play music
+                var audio = document.getElementById('bgm');
+                if (audio) {
+                    audio.play().catch(function(){});
+                    musicPlaying = true;
+                    var icon = document.getElementById('musicIcon');
+                    var btn = document.getElementById('musicBtn');
+                    if (icon) icon.className = 'fa-solid fa-circle-pause';
+                    if (btn) btn.classList.add('playing');
+                }
             }, 800);
+        }
+
+        // Copy rekening
+        function setupCopyRekening() {
+            var btn = document.getElementById('btnCopy');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                var rek = document.getElementById('rekening');
+                var text = rek ? rek.textContent.trim() : '';
+                if (!text) return;
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+                var orig = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                setTimeout(function() { btn.innerHTML = orig; }, 2000);
+            });
         }
 
         function mulaiCountdown() {
@@ -792,6 +828,8 @@
             t.classList.remove('hidden');
             setTimeout(function() { t.classList.add('hidden'); }, 3000);
         }
+
+        setupCopyRekening();
 
         var _nw = document.getElementById('navWrapper');
 
