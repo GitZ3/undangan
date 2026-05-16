@@ -2,13 +2,19 @@
     --primary: #d4b96a;
     --primary-light: #eddbaa;
     --primary-dark: #b89a4e;
+    --primary-deep: #8a6d2b;
     --dark: #1a1412;
     --dark-bg: #221c18;
     --dark-card: #2d2520;
     --light: #f5f0ea;
+    --light-warm: #ede4d8;
     --gray: #b0a89e;
+    --gray-light: #c8bfb4;
     --warm-glow: rgba(212, 185, 106, 0.06);
     --gold-gradient: linear-gradient(135deg, #d4b96a 0%, #eddbaa 50%, #d4b96a 100%);
+    --gold-gradient-rich: linear-gradient(135deg, #b89a4e 0%, #d4b96a 30%, #eddbaa 50%, #d4b96a 70%, #b89a4e 100%);
+    --gold-glow: 0 0 20px rgba(212, 185, 106, 0.3), 0 0 40px rgba(212, 185, 106, 0.1);
+    --border-ornate: 2px solid rgba(212, 185, 106, 0.2);
 }
 
 * {
@@ -739,10 +745,47 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .section-line {
-    width: 60px;
+    width: 80px;
     height: 1px;
-    background: var(--primary);
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.6;
+    position: relative;
+}
+
+.section-line::before,
+.section-line::after {
+    content: '\2726';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5rem;
+    color: var(--primary);
     opacity: 0.5;
+}
+
+.section-line::before { left: -8px; }
+.section-line::after { right: -8px; }
+
+.section-line-decor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.section-line-decor span {
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.5;
+}
+
+.section-line-decor::before,
+.section-line-decor::after {
+    content: '\2726';
+    font-size: 0.4rem;
+    color: var(--primary);
+    opacity: 0.4;
 }
 
 .section-title {
@@ -752,6 +795,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     align-items: center;
     gap: 10px;
     white-space: nowrap;
+    position: relative;
 }
 
 @media (max-width: 480px) {
@@ -1143,6 +1187,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     border-radius: 15px;
     border: 1px solid rgba(212, 185, 106, 0.2);
     min-width: 80px;
+    position: relative;
+    box-shadow: inset 0 0 20px var(--warm-glow);
+}
+
+.countdown-box::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(212, 185, 106, 0.06);
+    border-radius: 12px;
+    pointer-events: none;
 }
 
 .countdown-num {
@@ -1188,12 +1246,26 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     width: 320px;
     border: 1px solid rgba(212, 185, 106, 0.15);
     transition: all 0.3s ease;
+    position: relative;
+    box-shadow: inset 0 0 30px var(--warm-glow);
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(212, 185, 106, 0.08);
+    border-radius: 16px;
+    pointer-events: none;
 }
 
 .event-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), var(--gold-glow);
 }
 
 .event-icon {
@@ -1246,6 +1318,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     max-width: 450px;
     margin: 0 auto;
     border: 1px solid rgba(212, 185, 106, 0.15);
+    position: relative;
+    box-shadow: inset 0 0 30px var(--warm-glow);
+}
+
+.lokasi-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(212, 185, 106, 0.08);
+    border-radius: 16px;
+    pointer-events: none;
 }
 
 .lokasi-icon {
@@ -1813,11 +1899,26 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     width: 260px;
     border: 1px solid rgba(212, 185, 106, 0.15);
     transition: all 0.3s ease;
+    position: relative;
+    box-shadow: inset 0 0 25px var(--warm-glow);
+}
+
+.hadiah-card::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(212, 185, 106, 0.06);
+    border-radius: 12px;
+    pointer-events: none;
 }
 
 .hadiah-card:hover {
     border-color: var(--primary);
     transform: translateY(-5px);
+    box-shadow: inset 0 0 25px var(--warm-glow), 0 10px 30px rgba(0, 0, 0, 0.3), var(--gold-glow);
 }
 
 .hadiah-card i {
