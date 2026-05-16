@@ -249,7 +249,7 @@
                 </div>
                 <div class="video-wrapper reveal">
                     <div class="video-frame">
-                        <video controls preload="metadata" poster>
+                        <video controls preload="metadata" poster="poster-video.jpg">
                             <source src="wedding-video.mp4" type="video/mp4">
                         </video>
                         <div class="video-placeholder">
@@ -791,6 +791,19 @@
         };
 
         setTimeout(function() { _nw.classList.add('hidden'); }, 500);
+
+        // Hide video placeholder when video loads
+        var weddingVideo = document.querySelector('#galeri video');
+        if (weddingVideo) {
+            weddingVideo.addEventListener('loadeddata', function() {
+                var pl = document.querySelector('.video-placeholder');
+                if (pl) pl.style.display = 'none';
+            });
+            if (weddingVideo.readyState >= 2) {
+                var pl = document.querySelector('.video-placeholder');
+                if (pl) pl.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
