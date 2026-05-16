@@ -90,6 +90,18 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .cover-ornament-3 { bottom: 20%; left: 15%; animation-delay: 2s; }
 .cover-ornament-4 { bottom: 15%; right: 10%; animation-delay: 0.5s; }
 
+.cover-ornament-1::before,
+.cover-ornament-2::before,
+.cover-ornament-3::before,
+.cover-ornament-4::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+.cover-ornament-1::before { content: '\f005'; }
+.cover-ornament-2::before { content: '\f004'; }
+.cover-ornament-3::before { content: '\f005'; }
+.cover-ornament-4::before { content: '\f004'; }
+
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
@@ -115,7 +127,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 .rings-stack i {
     font-size: 3.5rem;
-    color: #e8d5a3;
+    color: var(--primary-light);
     text-shadow: 
         0 2px 8px rgba(212, 185, 106, 0.6),
         0 0 20px rgba(212, 185, 106, 0.3);
@@ -1799,7 +1811,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* FOOTER */
 .footer {
     padding: 60px 20px;
-    background: #080808;
+    background: var(--dark);
     text-align: center;
     border-top: 1px solid rgba(212, 185, 106, 0.1);
 }
@@ -1955,8 +1967,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .nav-toggle:hover {
-    background: linear-gradient(135deg, #c9a962 0%, #a88b4a 100%);
-    color: #1a1412;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--dark);
     border-color: var(--primary);
 }
 
@@ -2023,23 +2035,23 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    color: #c9a962;
+    color: var(--primary);
     scroll-snap-align: center;
 }
 
 .tab-btn:hover {
-    background: linear-gradient(135deg, #c9a962 0%, #a88b4a 100%);
-    color: #1a1412;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--dark);
     transform: translateY(-2px);
-    border-color: #c9a962;
+    border-color: var(--primary);
     box-shadow: 0 5px 15px rgba(212, 185, 106, 0.4);
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, #c9a962 0%, #e8d5a3 100%);
-    color: #1a1412;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--dark);
     transform: scale(1.1);
-    border-color: #c9a962;
+    border-color: var(--primary);
     box-shadow: 0 5px 20px rgba(212, 185, 106, 0.5);
 }
 
