@@ -1629,21 +1629,30 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .galeri-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 15px;
     max-width: 500px;
     margin: 0 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 5px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
 }
 
 .galeri-item {
+    flex: 0 0 auto;
+    width: 180px;
+    scroll-snap-align: start;
     perspective: 1000px;
 }
 
 .galeri-frame {
     position: relative;
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 9/16;
     background: var(--dark-card);
     border: 3px solid var(--primary);
     border-radius: 10px;
@@ -1669,7 +1678,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 .galeri-frame:hover {
-    transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+    transform: scale(1.05);
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.6),
         0 0 30px rgba(201, 169, 98, 0.3),
@@ -1721,8 +1730,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 
 @media (max-width: 480px) {
-    .galeri-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .galeri-item {
+        width: 150px;
     }
 }
 
