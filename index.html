@@ -782,7 +782,16 @@
             });
             
             this.reset();
+            showToast('Terima kasih! Ucapan Anda telah terkirim.');
         });
+
+        function showToast(msg) {
+            var t = document.getElementById('ucapanToast');
+            if (!t) return;
+            t.textContent = msg;
+            t.classList.remove('hidden');
+            setTimeout(function() { t.classList.add('hidden'); }, 3000);
+        }
 
         var _nw = document.getElementById('navWrapper');
 
@@ -805,5 +814,7 @@
             }
         }
     </script>
+
+    <div id="ucapanToast" class="toast hidden"></div>
 </body>
 </html>
