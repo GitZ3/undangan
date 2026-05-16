@@ -188,7 +188,7 @@
                             <div class="frame-corner bl"></div>
                             <div class="frame-corner br"></div>
                             <div class="photo-inner">
-                                <img src="https://images.unsplash.com/photo-1560109945-61c4e7a4a800?w=400&h=400&fit=crop" alt="Dyroth" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop" alt="Dyroth" loading="lazy">
                             </div>
                         </div>
                         <div class="couple-info">
@@ -216,7 +216,7 @@
                             <div class="frame-corner bl"></div>
                             <div class="frame-corner br"></div>
                             <div class="photo-inner">
-                                <img src="https://images.unsplash.com/photo-1554212104-9e7e39a80f93?w=400&h=400&fit=crop" alt="Miya" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?w=400&h=400&fit=crop" alt="Miya" loading="lazy">
                             </div>
                         </div>
                         <div class="couple-info">
@@ -302,7 +302,7 @@
                     <div class="galeri-item">
                         <div class="galeri-frame">
                             <div class="galeri-img">
-                                <img src="https://images.unsplash.com/photo-1549633038-e0fca6fef5ab?w=400&h=711&fit=crop" alt="Foto 5" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1533091090875-1ff4acc497dd?w=400&h=711&fit=crop" alt="Foto 5" loading="lazy">
                             </div>
                             <div class="galeri-overlay">
                                 <i class="fa-solid fa-heart"></i>
@@ -312,7 +312,7 @@
                     <div class="galeri-item">
                         <div class="galeri-frame">
                             <div class="galeri-img">
-                                <img src="https://images.unsplash.com/photo-1556911220-bffb3a6f082e?w=400&h=711&fit=crop" alt="Foto 6" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=400&h=711&fit=crop" alt="Foto 6" loading="lazy">
                             </div>
                             <div class="galeri-overlay">
                                 <i class="fa-solid fa-heart"></i>
@@ -487,11 +487,7 @@
                     <div class="hadiah-card reveal">
                         <i class="fa-solid fa-credit-card"></i>
                         <h4>Transfer Digital</h4>
-                        <p class="rekening-row">BCA: <span id="rekening">1234567890</span>
-                            <button class="btn-copy" id="btnCopy" title="Salin nomor rekening">
-                                <i class="fa-solid fa-copy"></i>
-                            </button>
-                        </p>
+                        <p class="rekening-row">BCA: <span id="rekening">1234567890</span></p>
                         <p>a.n. Dyroth</p>
                         <p class="hadiah-note">Note : Tuliskan nama dan nominal di pesan ucapan</p>
                     </div>
@@ -714,28 +710,6 @@
             }, 800);
         }
 
-        // Copy rekening
-        function setupCopyRekening() {
-            var btn = document.getElementById('btnCopy');
-            if (!btn) return;
-            btn.addEventListener('click', function() {
-                var rek = document.getElementById('rekening');
-                var text = rek ? rek.textContent.trim() : '';
-                if (!text) return;
-                var ta = document.createElement('textarea');
-                ta.value = text;
-                ta.style.position = 'fixed';
-                ta.style.opacity = '0';
-                document.body.appendChild(ta);
-                ta.select();
-                try { document.execCommand('copy'); } catch (e) {}
-                document.body.removeChild(ta);
-                var orig = btn.innerHTML;
-                btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-                setTimeout(function() { btn.innerHTML = orig; }, 2000);
-            });
-        }
-
         function mulaiCountdown() {
             const target = new Date(2026, 0, 30, 8, 0, 0);
 
@@ -829,10 +803,8 @@
             setTimeout(function() { t.classList.add('hidden'); }, 3000);
         }
 
-        setupCopyRekening();
-
-        var _nw = document.getElementById('navWrapper');
-
+            mulaiCountdown();
+            
         window.toggleNav = function() {
             _nw.classList.toggle('hidden');
         };

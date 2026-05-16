@@ -1951,38 +1951,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0;
     flex-wrap: nowrap;
 }
 
-.btn-copy {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    background: transparent;
-    color: var(--primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    padding: 0;
-    line-height: 1;
-}
-
-.btn-copy i {
-    font-size: 0.85rem;
-    line-height: 1;
-    display: block;
-}
-
-.btn-copy:hover {
-    background: var(--primary);
-    color: var(--dark);
-    border-color: var(--primary);
-}
 
 /* FOOTER */
 .footer {
