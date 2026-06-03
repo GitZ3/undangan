@@ -2310,20 +2310,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     transform: translateY(-1px);
 }
 
-/* BACKGROUND TRANSPARAN - OVERLAY BERTINGKAT */
-.hero::before {
-    background:
-        radial-gradient(ellipse at 30% 20%, rgba(212, 185, 106, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(212, 185, 106, 0.05) 0%, transparent 50%);
-}
-
-.section-anim::before {
-    background:
-        radial-gradient(circle at 20% 30%, rgba(212, 185, 106, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 80% 70%, rgba(212, 185, 106, 0.04) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(212, 185, 106, 0.03) 0%, transparent 50%);
-}
-
 @media (max-width: 768px) {
     .nav-wrapper {
         left: 10px;
@@ -2364,5 +2350,57 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
     .btn-copy i {
         font-size: 0.75rem;
     }
+}
+
+/* ====== BODY BACKGROUND AGAR TRANSPARANSI TERLIHAT ====== */
+body {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(212, 185, 106, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 100%, rgba(212, 185, 106, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #1a1412 0%, #2a2218 50%, #1a1412 100%);
+    background-attachment: fixed;
+}
+
+/* ====== SECTION BACKGROUNDS SEMI-TRANSPARAN ====== */
+#undangan .salam-section,
+#undangan .ayat-section,
+#undangan .countdown-section,
+#undangan .lokasi-section,
+#undangan .hadiah-section {
+    background: rgba(34, 28, 24, 0.88);
+}
+
+#undangan .hero {
+    background: linear-gradient(180deg, rgba(34, 28, 24, 0.85) 0%, rgba(26, 20, 18, 0.9) 100%);
+}
+
+#undangan .mempelai-section,
+#undangan .acara-section,
+#undangan .galeri-section,
+#undangan .ucapan-section,
+#undangan .footer {
+    background: rgba(26, 20, 18, 0.88);
+}
+
+/* Card backgrounds tetap solid agar konten terbaca */
+#undangan .salam-card,
+#undangan .ayat-card,
+#undangan .hadiah-card,
+#undangan .guest-card {
+    background: rgba(45, 37, 32, 0.92);
+}
+
+/* ====== SECTION ANIM OVERLAY IKUT DIPERKECIL ====== */
+#undangan .hero::before {
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(212, 185, 106, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(212, 185, 106, 0.04) 0%, transparent 50%);
+}
+
+#undangan .section-anim::before {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(212, 185, 106, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(212, 185, 106, 0.03) 0%, transparent 45%);
+    animation: none;
 }
 
