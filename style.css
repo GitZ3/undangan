@@ -2355,8 +2355,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* ====== BODY BACKGROUND AGAR TRANSPARANSI TERLIHAT ====== */
 body {
     background:
-        radial-gradient(ellipse at 50% 0%, rgba(212, 185, 106, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 100%, rgba(212, 185, 106, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 0%, rgba(212, 185, 106, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(212, 185, 106, 0.08) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212, 185, 106, 0.015) 40px, rgba(212, 185, 106, 0.015) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(212, 185, 106, 0.015) 40px, rgba(212, 185, 106, 0.015) 41px),
         linear-gradient(180deg, #1a1412 0%, #2a2218 50%, #1a1412 100%);
     background-attachment: fixed;
 }
@@ -2367,11 +2369,11 @@ body {
 #undangan .countdown-section,
 #undangan .lokasi-section,
 #undangan .hadiah-section {
-    background: rgba(34, 28, 24, 0.88);
+    background: rgba(34, 28, 24, 0.75);
 }
 
 #undangan .hero {
-    background: linear-gradient(180deg, rgba(34, 28, 24, 0.85) 0%, rgba(26, 20, 18, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(34, 28, 24, 0.7) 0%, rgba(26, 20, 18, 0.8) 100%);
 }
 
 #undangan .mempelai-section,
@@ -2379,7 +2381,7 @@ body {
 #undangan .galeri-section,
 #undangan .ucapan-section,
 #undangan .footer {
-    background: rgba(26, 20, 18, 0.88);
+    background: rgba(26, 20, 18, 0.75);
 }
 
 /* Card backgrounds tetap solid agar konten terbaca */
