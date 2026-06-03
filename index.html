@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Dyroth & Miya</title>
+    <meta name="description" content="Undangan pernikahan Dyroth & Miya. Mohon doa restu Anda untuk acara pernikahan kami.">
+    <meta property="og:title" content="Undangan Pernikahan - Dyroth & Miya">
+    <meta property="og:description" content="Mohon doa restu Anda untuk acara pernikahan kami.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gitz3.github.io/undangan">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=630&fit=crop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Undangan Pernikahan - Dyroth & Miya">
+    <meta name="twitter:description" content="Mohon doa restu Anda untuk acara pernikahan kami.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💍%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- COVER PAGE -->
@@ -46,7 +56,7 @@
             
             <p class="cover-date">30 tes 2008</p>
             
-            <button class="btn-buka" onclick="bukaUndangan()">
+            <button class="btn-buka" aria-label="Buka undangan">
                 <i class="fa-solid fa-envelope-open"></i>
                 <span>Buka Undangan</span>
             </button>
@@ -456,9 +466,15 @@
                     <div class="guestbook-header">
                         <i class="fa-solid fa-comment-dots"></i>
                         <span>Pesan Tamu</span>
+                        <span class="guestbook-stats" id="guestbookStats"></span>
                     </div>
                     <div class="guestbook-messages" id="guestMessages">
-                        <div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>
+                        <div class="guestbook-loading">
+                            <span class="loading-dot"></span>
+                            <span class="loading-dot"></span>
+                            <span class="loading-dot"></span>
+                            <span>Memuat pesan...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -487,7 +503,11 @@
                     <div class="hadiah-card reveal">
                         <i class="fa-solid fa-credit-card"></i>
                         <h4>Transfer Digital</h4>
-                        <p class="rekening-row">BCA: <span id="rekening">1234567890</span></p>
+                        <p class="rekening-row">BCA: <span id="rekening">1234567890</span>
+                            <button class="btn-copy" id="btnCopy" title="Salin nomor rekening">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </p>
                         <p>a.n. Dyroth</p>
                         <p class="hadiah-note">Note : Tuliskan nama dan nominal di pesan ucapan</p>
                     </div>
@@ -513,317 +533,53 @@
     </audio>
 
     <!-- Music Button -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <button class="music-btn" id="musicBtn" aria-label="Musik">
         <i class="fa-solid fa-music" id="musicIcon"></i>
     </button>
 
     <!-- Auto Scroll Button -->
-    <button class="auto-scroll-btn" id="autoScrollBtn" onclick="toggleAutoScroll()">
+    <button class="auto-scroll-btn" id="autoScrollBtn" aria-label="Auto scroll">
         <i class="fa-solid fa-play" id="scrollIcon"></i>
     </button>
 
     <!-- Tab Navigation -->
     <div class="nav-wrapper" id="navWrapper">
         <div class="tab-nav" id="tabNav">
-        <button class="tab-btn active" onclick="scrollToSection('hero', this)" title="Home">
+        <button class="tab-btn active" data-section="hero" title="Home">
             <i class="fa-solid fa-house"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('salam', this)" title="Salam">
+        <button class="tab-btn" data-section="salam" title="Salam">
             <i class="fa-solid fa-hands"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('ayat', this)" title="Ayat">
+        <button class="tab-btn" data-section="ayat" title="Ayat">
             <i class="fa-solid fa-book-quran"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('mempelai', this)" title="Mempelai">
+        <button class="tab-btn" data-section="mempelai" title="Mempelai">
             <i class="fa-solid fa-user-group"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('galeri', this)" title="Galeri">
+        <button class="tab-btn" data-section="galeri" title="Galeri">
             <i class="fa-solid fa-images"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('countdown', this)" title="Hitung">
+        <button class="tab-btn" data-section="countdown" title="Hitung">
             <i class="fa-solid fa-hourglass-half"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('acara', this)" title="Acara">
+        <button class="tab-btn" data-section="acara" title="Acara">
             <i class="fa-solid fa-calendar-day"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('lokasi', this)" title="Lokasi">
+        <button class="tab-btn" data-section="lokasi" title="Lokasi">
             <i class="fa-solid fa-map-location-dot"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('ucapan', this)" title="Ucap">
+        <button class="tab-btn" data-section="ucapan" title="Ucap">
             <i class="fa-solid fa-comments"></i>
         </button>
-        <button class="tab-btn" onclick="scrollToSection('hadiah', this)" title="Hadiah">
+        <button class="tab-btn" data-section="hadiah" title="Hadiah">
             <i class="fa-solid fa-gift"></i>
         </button>
     </div>
-    <button class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigasi">
         <i class="fa-solid fa-chevron-right"></i>
     </button>
 </div>
-
-    <script>
-        // Firebase config - ganti dengan config dari project Firebase kamu
-        var firebaseConfig = {
-            apiKey: "AIzaSyCBfM0WIpPnz4fCH7sPu98IpIXZGRFxgro",
-            authDomain: "guest-dd0a3.firebaseapp.com",
-            projectId: "guest-dd0a3",
-            storageBucket: "guest-dd0a3.firebasestorage.app",
-            messagingSenderId: "950417950891",
-            appId: "1:950417950891:web:ead4b62a37954c1480cfee"
-        };
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.firestore();
-
-        // Scroll reveal animation
-        function initReveal() {
-            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-            revealElements.forEach(el => revealObserver.observe(el));
-        }
-        document.addEventListener('DOMContentLoaded', initReveal);
-
-        let musicPlaying = false;
-        function toggleMusic() {
-            const audio = document.getElementById('bgm');
-            const icon = document.getElementById('musicIcon');
-            const btn = document.getElementById('musicBtn');
-            if (musicPlaying) {
-                audio.pause();
-                icon.className = 'fa-solid fa-music';
-                btn.classList.remove('playing');
-            } else {
-                audio.play().catch(() => {});
-                icon.className = 'fa-solid fa-circle-pause';
-                btn.classList.add('playing');
-            }
-            musicPlaying = !musicPlaying;
-        }
-
-        let autoScrollEnabled = false;
-        var autoScrollId;
-
-        function toggleAutoScroll() {
-            const btn = document.getElementById('autoScrollBtn');
-            const icon = document.getElementById('scrollIcon');
-            
-            autoScrollEnabled = !autoScrollEnabled;
-            
-            if (autoScrollEnabled) {
-                icon.className = 'fa-solid fa-pause';
-                btn.classList.add('active');
-                startAutoScroll();
-            } else {
-                icon.className = 'fa-solid fa-play';
-                btn.classList.remove('active');
-                stopAutoScroll();
-            }
-        }
-
-        function startAutoScroll() {
-            function step() {
-                if (!autoScrollEnabled) return;
-                var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                if (window.scrollY >= maxScroll) {
-                    stopAutoScroll();
-                    document.getElementById('autoScrollBtn').click();
-                    return;
-                }
-                window.scrollBy(0, 1.5);
-                autoScrollId = requestAnimationFrame(step);
-            }
-            autoScrollId = requestAnimationFrame(step);
-        }
-
-        function stopAutoScroll() {
-            if (autoScrollId) cancelAnimationFrame(autoScrollId);
-        }
-
-        function scrollToSection(sectionId, btn) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                if (btn) {
-                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                }
-            }
-        }
-
-        // Update active tab on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const nav = document.getElementById('tabNav');
-        
-        const observerOptions = {
-            root: null,
-            threshold: 0.3
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    let activeBtn = null;
-                    document.querySelectorAll('.tab-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                        if (btn.getAttribute('onclick').includes("'" + id + "'")) {
-                            btn.classList.add('active');
-                            activeBtn = btn;
-                        }
-                    });
-                    if (activeBtn) {
-                        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-
-        function bukaUndangan() {
-            const cover = document.getElementById('cover');
-            const undangan = document.getElementById('undangan');
-            
-            cover.style.opacity = '0';
-            cover.style.transition = 'opacity 0.8s ease';
-            
-            setTimeout(() => {
-                cover.style.display = 'none';
-                undangan.style.display = 'block';
-                window.scrollTo(0, 0);
-                mulaiCountdown();
-                // Auto-play music
-                var audio = document.getElementById('bgm');
-                if (audio) {
-                    audio.play().catch(function(){});
-                    musicPlaying = true;
-                    var icon = document.getElementById('musicIcon');
-                    var btn = document.getElementById('musicBtn');
-                    if (icon) icon.className = 'fa-solid fa-circle-pause';
-                    if (btn) btn.classList.add('playing');
-                }
-            }, 800);
-        }
-
-        function mulaiCountdown() {
-            const target = new Date(2026, 0, 30, 8, 0, 0);
-
-            function update() {
-                const now = new Date().getTime();
-                const selisih = target.getTime() - now;
-
-                if (selisih < 0) {
-                    ['days','hours','minutes','seconds'].forEach(id => {
-                        document.getElementById(id).textContent = '00';
-                    });
-                    return;
-                }
-
-                const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
-                const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-                const detik = Math.floor((selisih % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = String(hari).padStart(2, '0');
-                document.getElementById('hours').textContent = String(jam).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(menit).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(detik).padStart(2, '0');
-            }
-
-            update();
-            setInterval(update, 1000);
-        }
-
-        var guestContainer = document.getElementById('guestMessages');
-
-        // Real-time listener dari Firestore
-        db.collection('guestbook').orderBy('time', 'asc').onSnapshot(function(snapshot) {
-            if (snapshot.empty) {
-                guestContainer.innerHTML = '<div class="guest-empty">Belum ada ucapan. Jadilah yang pertama!</div>';
-                return;
-            }
-            guestContainer.innerHTML = '';
-            snapshot.forEach(function(doc) {
-                var msg = doc.data();
-                var j = msg.jam || '--:--';
-                var t = msg.tanggal || msg.date || '--';
-                guestContainer.innerHTML +=
-                    '<div class="guest-card">' +
-                        '<div class="guest-header">' +
-                            '<div class="guest-avatar">' + msg.name.charAt(0).toUpperCase() + '</div>' +
-                            '<div class="guest-meta">' +
-                                '<span class="guest-name">' + msg.name + '</span>' +
-                                '<span class="guest-attendance ' + msg.attendance + '">' + (msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir') + '</span>' +
-                            '</div>' +
-                        '</div>' +
-                        '<p class="guest-text">' + msg.message + '</p>' +
-                        '<div class="guest-footer">' +
-                            '<span class="guest-time">' + j + '</span>' +
-                            '<span class="guest-date">' + t + '</span>' +
-                        '</div>' +
-                    '</div>';
-            });
-            guestContainer.scrollTop = guestContainer.scrollHeight;
-        });
-
-        document.getElementById('ucapanForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var name = document.getElementById('guestName').value.trim();
-            var attendance = document.getElementById('guestAttendance').value;
-            var message = document.getElementById('guestMessage').value.trim();
-            
-            if (!name || !attendance || !message) return;
-            
-            var now = new Date();
-            var jam = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-            var tanggal = String(now.getDate()).padStart(2,'0') + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + now.getFullYear();
-            db.collection('guestbook').add({
-                name: name,
-                attendance: attendance,
-                message: message,
-                jam: jam,
-                tanggal: tanggal,
-                time: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            
-            this.reset();
-            showToast('Terima kasih! Ucapan Anda telah terkirim.');
-        });
-
-        function showToast(msg) {
-            var t = document.getElementById('ucapanToast');
-            if (!t) return;
-            t.textContent = msg;
-            t.classList.remove('hidden');
-            setTimeout(function() { t.classList.add('hidden'); }, 3000);
-        }
-
-            mulaiCountdown();
-            
-        window.toggleNav = function() {
-            _nw.classList.toggle('hidden');
-        };
-
-        setTimeout(function() { _nw.classList.add('hidden'); }, 500);
-
-        // Hide video placeholder when video loads
-        var weddingVideo = document.querySelector('#galeri video');
-        if (weddingVideo) {
-            weddingVideo.addEventListener('loadeddata', function() {
-                var pl = document.querySelector('.video-placeholder');
-                if (pl) pl.style.display = 'none';
-            });
-            if (weddingVideo.readyState >= 2) {
-                var pl = document.querySelector('.video-placeholder');
-                if (pl) pl.style.display = 'none';
-            }
-        }
-    </script>
 
     <div id="ucapanToast" class="toast hidden"></div>
 </body>
